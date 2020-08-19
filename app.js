@@ -1,13 +1,14 @@
 //#12 - Creating a http server in node to test
-const http = require("http");
+// const http = require("http");
 
-const server = http.createServer(function (request, response) {
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  response.end('Hey guys"');
-});
+// const server = http.createServer(function (request, response) {
 
-server.listen(3000, "127.0.0.1");
-console.log("oprt 3000 listening");
+//   response.writeHead(200, { "Content-Type": "text/plain" });
+//   response.end('Hey guys"');
+// });
+
+// server.listen(3000, "127.0.0.1");
+// console.log("oprt 3000 listening");
 
 // //#9
 // const fs = require("fs");
