@@ -2,8 +2,9 @@
 // Coloco uma variável
 const counter = require('./count');
 
-console.log(counter([1,2,3]));
-//console.log(teste(1,2,3));
+
+console.log(counter.counter([1,2,3]));
+console.log(counter.teste(1,2,3));
 
 // ----------------------type of functions -
 // // Normal function statement
