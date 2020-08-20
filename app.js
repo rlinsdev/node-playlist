@@ -1,3 +1,34 @@
+//#17
+const http = require("http");
+const fs = require("fs");
+
+const server = http.createServer(function (req, res) {
+  console.log(`request was made ${req.url}`);
+  res.writeHead(200, { "Content-Type": "text/html" });
+  const myReadStream = fs.createReadStream(__dirname + "/index.html", "utf8");
+  myReadStream.pipe(res);
+});
+
+server.listen(3000, "127.0.0.1");
+console.log("listen in port 3000");
+
+// //#15 -
+
+// //# 14 Strems
+// const http = require("http");
+// const fs = require("fs");
+
+// const myReadStream = fs.createReadStream(__dirname + "/README.md", "utf8");
+// const myWriteStream = fs.createWriteStream(__dirname + "/writeme.md");
+
+// myReadStream.pipe(myWriteStream);
+
+// myReadStream.on("data", function (chunk) {
+//   console.log("new chunk received");
+//   //console.log(chunk);
+//   myWriteStream.write(chunk);
+// });
+
 //#12 - Creating a http server in node to test
 // const http = require("http");
 
