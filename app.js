@@ -1,15 +1,16 @@
 // #23 - Express
 const express = require("express");
-const { response } = require("express");
-
 const app = express();
+
+app.set("view engine", "ejs");
 
 app.get("/", function (req, res) {
   res.send("home pagen");
 });
 
-app.get("/", function (req, res) {
-  res.send("home pagen");
+app.get("/profile/:name", function (req, res) {
+  let data = {age: 29, job:'ninja'};
+  res.render("profile", {person: req.params.name, data: data});
 });
 
 app.listen(3000);
