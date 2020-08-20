@@ -1,16 +1,53 @@
-//#17
+//#19
 const http = require("http");
 const fs = require("fs");
 
 const server = http.createServer(function (req, res) {
   console.log(`request was made ${req.url}`);
-  res.writeHead(200, { "Content-Type": "text/html" });
-  const myReadStream = fs.createReadStream(__dirname + "/index.html", "utf8");
-  myReadStream.pipe(res);
+
+  if (req.url === "/home" || req.url === "/") {
+    res.writeHead(200, { "content-type": "text/html" });
+    fs.createReadStream(__dirname + "/index.html").pipe(res);
+  } else if (req.url === "/contact") {
+    res.writeHead(200, { "content-type": "text/html" });
+    fs.createReadStream(__dirname + "/contact.html").pipe(res);
+  } else if (req.url == "/api") {
+    const ninjas = [
+      { name: "Ryu", age: 29 },
+      { name: "yoshy", age: 150 },
+    ];
+    res.writeHead(200, {"content-type": 'application/json'});
+    res.end(JSON.stringify(ninjas));
+  }
+  // res.writeHead(200, { "Content-Type": "application/json" });
+
+  // res.end("Feed me pop-corn");
+  // const myReadStream = fs.createReadStream(__dirname + "/index.html", "utf8");
+  // myReadStream.pipe(res);
 });
 
 server.listen(3000, "127.0.0.1");
 console.log("listen in port 3000");
+
+//#17 /
+// const http = require("http");
+// const fs = require("fs");
+
+// const server = http.createServer(function (req, res) {
+//   console.log(`request was made ${req.url}`);
+//   res.writeHead(200, { "Content-Type": "application/json" });
+//   const myObject = {
+//     name:'Ryu',
+//     job: 'Ninja',
+//     age: 29
+//   }
+//   res.end(JSON.stringify(myObject));
+//   // const myReadStream = fs.createReadStream(__dirname + "/index.html", "utf8");
+//   // myReadStream.pipe(res);
+// });
+
+// server.listen(3000, "127.0.0.1");
+// console.log("listen in port 3000");
 
 // //#15 -
 
