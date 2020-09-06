@@ -4,17 +4,29 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+app.use('/assets', express.static('assets'));
+
 app.get("/", function (req, res) {
-  res.send("home pagen");
+  res.render("index");
+});
+
+
+app.get("/contact", function (req, res) {
+  console.log();
+  res.render("contact");
 });
 
 app.get("/profile/:name", function (req, res) {
-  let data = {age: 29, job:'ninja', hobbies: ["fishin","Hunting","Racing"]};
+  let data = {
+    age: 29,
+    job: "ninja",
+    hobbies: ["fishin", "Hunting", "Racing"],
+  };
 
-  res.render("profile", {person: req.params.name, data: data});
+  res.render("profile", { person: req.params.name, data: data });
 });
 
-app.listen(3000);
+app.listen(3001);
 
 // //#19
 // const http = require("http");
